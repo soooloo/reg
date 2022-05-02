@@ -37,22 +37,24 @@
         password2
 
 			})
-    const res = await fetch('http://beta.app.2t.sd/consumer/register', {
+    const res = await fetch('https://beta.app.2t.sd/consumer/register', {
 			method: 'POST',
-      mode: 'no-cors',
 			body: JSON.stringify({
 				username,
         mobile,
         email,
         password,
         password2
-
 			})
 		})
 		
 		const json = await res.json()
+    console.log(json)
 		result = JSON.stringify(json)
-        console.log(result)
+    console.log(result)
+    if (json.ok == "object was successfully created") {
+        alert("You have registered successfully!")
+    }
   }
   
   </script>
