@@ -21,13 +21,47 @@
 		result = JSON.stringify(json)
         console.log(result)
 	}
+  async function handleSubmit(e) {
+    e.preventDefault()
+    let username = e.target.username.value
+    let mobile = e.target.mobile.value
+    let email = e.target.email.value
+    let password = e.target.password.value
+    let password2 = e.target.password2.value
+
+    console.log({
+				username,
+        mobile,
+        email,
+        password,
+        password2
+
+			})
+    const res = await fetch('http://beta.app.2t.sd/consumer/register', {
+			method: 'POST',
+      mode: 'no-cors',
+			body: JSON.stringify({
+				username,
+        mobile,
+        email,
+        password,
+        password2
+
+			})
+		})
+		
+		const json = await res.json()
+		result = JSON.stringify(json)
+        console.log(result)
+  }
+  
   </script>
   <div class="min-h-max flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full space-y-8">
         <div>
           <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">Sign Up</h2>
         </div>
-        <form class="mt-8 space-y-6" action="/src/routes/contact.js" method="POST">
+        <form class="mt-8 space-y-6" on:submit={handleSubmit} method="POST">
           <input type="hidden" name="remember" value="true">
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
