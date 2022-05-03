@@ -29,44 +29,6 @@
 			alert(json['code'] + '\n' + json['message']);
 		}
 	}
-	// async function handleSubmit(e) {
-	//   e.preventDefault()
-	//   let username = e.target.username.value
-	//   let mobile = e.target.mobile.value
-	//   let email = e.target.email.value
-	//   let password = e.target.password.value
-	//   let password2 = e.target.password2.value
-
-	//   console.log({
-	//       username,
-	//       mobile,
-	//       email,
-	//       password,
-	//       password2
-
-	//     })
-	//   const res = await fetch('https://beta.app.2t.sd/consumer/register', {
-	//     method: 'POST',
-	//     body: JSON.stringify({
-	//       username,
-	//       mobile,
-	//       email,
-	//       password,
-	//       password2
-	//     })
-	//   })
-
-	//   const json = await res.json()
-	//   console.log(json)
-	//   result = JSON.stringify(json)
-	//   console.log(result)
-	//   if (json.ok == "object was successfully created") {
-	//       alert("You have registered successfully!")
-	//   }
-	//   else {
-	//     alert(json['code'] + '\n' + json['message'])
-	//   }
-	// }
 </script>
 
 <div class="min-h-max flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

@@ -1,5 +1,7 @@
 <script>
 	export let registered = true;
+	export let loggedIn = false;
+	export let loggedUser = '';
 	let username = '';
 	let password = '';
 	let result = null;
@@ -17,7 +19,8 @@
 		result = JSON.stringify(json);
 		console.log(json);
 		if (json.authorization) {
-			alert('You have LoggedIn successfully! as ' + json.user.username);
+			loggedIn = true;
+			loggedUser = username;
 		} else {
 			alert(json['code'] + '\n' + json['message']);
 		}
