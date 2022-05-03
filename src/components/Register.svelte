@@ -1,55 +1,24 @@
 <script>
-  let username = "suliman"
-  let mobile = "0123868257"
-  let email = "z@am.com"
-  let password = "123456789"
-  let password2 = "123456789"
+  let username = ""
+  let mobile = ""
+  let email = ""
+  let password = ""
+  let password2 = ""
   let result = null
-  async function doPost () {
-  const res = await fetch('http://beta.app.2t.sd/consumer/register', {
-    method: 'POST',
-    body: JSON.stringify({
-      username,
-      mobile,
-              password,
-              password2,
-              email
-    })
-  })
-  
-  const json = await res.json()
-  result = JSON.stringify(json)
-      console.log(result)
-}
-async function handleSubmit(e) {
-  e.preventDefault()
-  let username = e.target.username.value
-  let mobile = e.target.mobile.value
-  let email = e.target.email.value
-  let password = e.target.password.value
-  let password2 = e.target.password2.value
-
-  console.log({
-      username,
-      mobile,
-      email,
-      password,
-      password2
-
-    })
+  async function handleSubmit (event) {
+    event.preventDefault()
   const res = await fetch('https://beta.app.2t.sd/consumer/register', {
     method: 'POST',
     body: JSON.stringify({
       username,
       mobile,
-      email,
       password,
-      password2
+      password2,
+      email
     })
   })
   
   const json = await res.json()
-  console.log(json)
   result = JSON.stringify(json)
   console.log(result)
   if (json.ok == "object was successfully created") {
@@ -59,6 +28,44 @@ async function handleSubmit(e) {
     alert(json['code'] + '\n' + json['message'])
   }
 }
+// async function handleSubmit(e) {
+//   e.preventDefault()
+//   let username = e.target.username.value
+//   let mobile = e.target.mobile.value
+//   let email = e.target.email.value
+//   let password = e.target.password.value
+//   let password2 = e.target.password2.value
+
+//   console.log({
+//       username,
+//       mobile,
+//       email,
+//       password,
+//       password2
+
+//     })
+//   const res = await fetch('https://beta.app.2t.sd/consumer/register', {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       username,
+//       mobile,
+//       email,
+//       password,
+//       password2
+//     })
+//   })
+  
+//   const json = await res.json()
+//   console.log(json)
+//   result = JSON.stringify(json)
+//   console.log(result)
+//   if (json.ok == "object was successfully created") {
+//       alert("You have registered successfully!")
+//   }
+//   else {
+//     alert(json['code'] + '\n' + json['message'])
+//   }
+// }
 
 </script>
 
