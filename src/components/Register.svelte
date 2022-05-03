@@ -6,6 +6,9 @@
 	let password = '';
 	let password2 = '';
 	let result = null;
+	/**
+	 * @param {{ preventDefault: () => void; }} event
+	 */
 	async function handleSubmit(event) {
 		event.preventDefault();
 		const res = await fetch('https://beta.app.2t.sd/consumer/register', {
