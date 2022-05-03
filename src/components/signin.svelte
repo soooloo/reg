@@ -1,23 +1,52 @@
+<script>
+  export let registered = true;
+  let username = ""
+  let password = ""
+  let result = null
+  async function handleSubmit (event) {
+    event.preventDefault()
+  const res = await fetch('https://beta.app.2t.sd/consumer/login', {
+    method: 'POST',
+    body: JSON.stringify({
+      username,
+      password,
+    })
+  })
+  
+  const json = await res.json()
+  result = JSON.stringify(json)
+  console.log(json)
+  if (json.authorization) {
+      alert("You have LoggedIn successfully! as " + json.user.username)
+  }
+  else {
+    alert(json['code'] + '\n' + json['message'])
+  }
+}
+</script>
+
+
+
 <div class="min-h-max flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full space-y-8">
         <div>
           <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">Sign In</h2>
         </div>
-        <form class="mt-8 space-y-6" on:submit={} method="POST">
+        <form class="mt-8 space-y-6" on:submit={handleSubmit} method="POST">
           <input type="hidden" name="remember" value="true">
           <div class="rounded-md shadow-sm -space-y-px">
             <div>
               <label for="username" class="sr-only">User Name</label>
-              <input id="username" name="username" type="text" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-sky-600 focus:border-sky-600 focus:z-10 sm:text-sm" placeholder="User Name">
+              <input id="username" name="username" type="text" autocomplete="username" bind:value={username} required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-sky-600 focus:border-sky-600 focus:z-10 sm:text-sm" placeholder="User Name">
             </div>
             <div>
               <label for="password" class="sr-only">Password</label>
-              <input id="password" name="password" type="password" autocomplete="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-sky-600 focus:border-sky-600 focus:z-10 sm:text-sm" placeholder="Password">
+              <input id="password" name="password" type="password" autocomplete="password" bind:value={password} required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-sky-600 focus:border-sky-600 focus:z-10 sm:text-sm" placeholder="Password">
             </div>
            </div>
           <div class="flex items-center justify-between">
             <div class="text-sm">
-              <a href="/src/routes/index.svelte" class="font-medium text-sky-600 hover:text-sky-600">New user? Sign up</a>
+              <a href="#" on:click={() => registered = !registered} class="font-medium text-sky-600 hover:text-sky-600">New user? Sign up</a>
             </div>
          
     

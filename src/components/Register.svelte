@@ -1,4 +1,5 @@
 <script>
+  export let registered = false;
   let username = ""
   let mobile = ""
   let email = ""
@@ -22,7 +23,8 @@
   result = JSON.stringify(json)
   console.log(result)
   if (json.ok == "object was successfully created") {
-      alert("You have registered successfully!")
+      alert("You have registered successfully!, Please LogIn!")
+      registered = true
   }
   else {
     alert(json['code'] + '\n' + json['message'])
@@ -105,7 +107,7 @@
     <div class="flex items-center justify-between">
       <div class="text-sm">
           <!-- svelte-ignore a11y-invalid-attribute -->
-          <a href="#" class="font-medium text-sky-600 hover:text-sky-600"> Sign in </a>
+          <a href="#" on:click={() => registered = !registered} class="font-medium text-sky-600 hover:text-sky-600"> Sign in </a>
       </div>
       </div>
       
